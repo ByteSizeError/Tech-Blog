@@ -1,0 +1,19 @@
+{
+    "name": "tech-blog",
+    "version": "1.0.0",
+    "description": "Tech Blog -",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ByteSizeError/Tech-Blog.git"
+    },
+    "author": "Jimmy Zheng",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ByteSizeError/Tech-Blog/issues"
+    },
+    "homepage": "https://github.com/ByteSizeError/Tech-Blog#readme"
+}
