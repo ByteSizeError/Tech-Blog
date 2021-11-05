@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User, Post } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async (req, res) => {
@@ -14,6 +14,7 @@ router.get("/", withAuth, async (req, res) => {
         res.render("homepage", {
             users,
             logged_in: req.session.logged_in,
+            posts,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -30,6 +31,11 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect("/");
+        return;
+    }
+
     res.render("signup");
 });
 
