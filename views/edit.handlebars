@@ -1,0 +1,30 @@
+<section class="card">
+    <header>Edit Post</header>
+    <form class="form edit-form">
+        <div class="form-group">
+            <label for="title-edit">Title</label>
+            <input
+                type="text"
+                class="form-input"
+                id="title-edit"
+                placeholder="{{post.title}}"
+            />
+        </div>
+        <div class="form-group">
+            <label for="content-edit">Content</label>
+            <input
+                type="text"
+                class="form-input"
+                id="content-edit"
+                placeholder="{{post.content}}"
+            />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Update Post</button>
+            <button class="btn btn-danger" id="delete-form">Delete</button>
+        </div>
+
+    </form>
+</section>
+
+<script src="/js/edit.js"></script>
