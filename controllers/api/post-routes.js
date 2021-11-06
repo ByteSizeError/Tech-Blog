@@ -41,6 +41,7 @@ router.put("/:id", async (req, res) => {
         const postData = await Post.update(req.body, {
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
         if (!postData[0]) {
