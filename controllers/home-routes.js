@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const { User, Post } = require("../models");
+const { User, Post, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
-            // TODO: insert created by user on posts
             include: [{ model: User }],
             order: [["date_created", "DESC"]],
         });
@@ -66,9 +65,22 @@ router.get("/posts/:id", withAuth, async (req, res) => {
 
         const post = postData.get({ plain: true });
 
+        const commentData = await Comment.findAll({
+            include: [{ model: User }],
+            where: {
+                post_id: req.params.id,
+            },
+            order: [["date_created", "DESC"]],
+        });
+
+        const comments = commentData.map((comment) =>
+            comment.get({ plain: true })
+        );
+
         res.render("post", {
             logged_in: req.session.logged_in,
             post,
+            comments,
         });
     } catch (err) {
         res.status(500).json(err);
