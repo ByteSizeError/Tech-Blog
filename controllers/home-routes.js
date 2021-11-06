@@ -1,10 +1,12 @@
 const router = require("express").Router();
-const { Post } = require("../models");
+const { User, Post } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
+            // TODO: insert created by user on posts
+            include: [{ model: User }],
             order: [["date_created", "DESC"]],
         });
 
@@ -13,6 +15,45 @@ router.get("/", withAuth, async (req, res) => {
         res.render("homepage", {
             logged_in: req.session.logged_in,
             posts,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get("/dashboard", withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: req.session.user_id,
+            },
+            order: [["date_created", "DESC"]],
+        });
+
+        const posts = postData.map((user) => user.get({ plain: true }));
+
+        res.render("dashboard", {
+            logged_in: req.session.logged_in,
+            posts,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get("/create", withAuth, async (req, res) => {
+    res.render("create");
+});
+
+router.get("/edit/:id", withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id);
+
+        const post = postData.get({ plain: true });
+
+        res.render("edit", {
+            logged_in: req.session.logged_in,
+            post,
         });
     } catch (err) {
         res.status(500).json(err);
