@@ -1,4 +1,18 @@
-<section class="card">
-    <p>{{content}}</p>
-    <p> - {{user.username}}, {{date_created}}</p>
+<section class="card m-4">
+    <header class="card-header">
+        <span class="text-muted">By</span>
+        <span class="fw-bold">
+            {{user.username}}
+        </span></header>
+    <div class="card-body">
+        <p class="card-text">{{content}}</p>
+    </div>
+    <footer class="card-footer">
+        <span class="text-muted">Posted</span>
+        <span class="fw-lighter">
+            {{date_created}}
+
+        </span>
+
+    </footer>
 </section>
