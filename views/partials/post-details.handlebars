@@ -1,14 +1,25 @@
-<section class="card" style="width: 90%;">
+<section class="card m-4">
 
-    <header>
-        <a href="/posts/{{id}}">{{title}}</a>
-        <span>
-            Posted by
+    <header class="card-header">
+        <span class="text-muted">By</span>
+        <span class="fw-bold">
             {{user.username}}
-            on
-            {{date_created}}
         </span>
     </header>
+    <div class="card-body">
+        <h3 class="card-title text-center">
+            {{title}}
+        </h3>
+        <p class="card-text">{{content}}</p>
+        <div class="text-center">
+            <a href="/posts/{{id}}" class="btn btn-secondary">Comments</a>
 
-    <p>{{content}}</p>
+        </div>
+    </div>
+    <footer class="card-footer">
+        <span class="text-muted">Posted</span>
+        <span class="fw-lighter">
+            {{date_created}}
+        </span>
+    </footer>
 </section>
