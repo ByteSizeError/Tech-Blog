@@ -1,0 +1,29 @@
+<section class="card m-4">
+    <header class="card-header">
+        <span class="text-muted">By</span>
+        <span class="fw-bold">
+            {{user.username}}
+        </span></header>
+    <div class="card-body">
+        <textarea
+            class="form-control card-text mb-3"
+            id="content-{{id}}"
+        >{{content}}</textarea>
+        <div>
+            <a class="btn btn-primary update-comment me-3" id="update-{{id}}">
+                Update
+            </a>
+            <a class="btn btn-danger delete-comment" id="delete-{{id}}">
+                Delete
+            </a>
+        </div>
+    </div>
+
+    <footer class="card-footer">
+        <span class="text-muted">Posted</span>
+        <span class="fw-lighter">
+            {{format_date date_created}}
+        </span>
+
+    </footer>
+</section>

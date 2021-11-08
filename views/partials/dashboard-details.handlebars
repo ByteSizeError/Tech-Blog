@@ -1,6 +1,30 @@
-<button class="card">
-    <a href="/edit/{{id}}">
-        <header>{{title}}</header>
-    </a>
-    <p>{{date_created}}</p>
-</button>
+<section class="card m-4">
+    <header class="card-header">
+        <span class="text-muted">By</span>
+        <span class="fw-bold">
+            {{user.username}}
+        </span>
+    </header>
+
+    <div class="card-body">
+        <h3 class="card-title text-center">
+            {{title}}
+        </h3>
+        <p class="card-text">{{content}}</p>
+
+        <div class="text-center">
+            <a class="btn btn-primary" href="/edit/{{id}}">
+                Edit
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="card-footer">
+        <span class="text-muted">Posted</span>
+        <span class="fw-lighter">
+            {{date_created}}
+        </span>
+
+    </footer>
+</section>

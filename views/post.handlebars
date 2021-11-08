@@ -1,5 +1,10 @@
 <section class="card m-4">
-    <header class="card-header fw-bold">{{user.username}}</header>
+    <header class="card-header">
+        <span class="text-muted">By</span>
+        <span class="fw-bold">
+            {{post.user.username}}
+        </span>
+    </header>
     <div class="card-body">
         <h3 class="card-title text-center">{{post.title}}</h3>
         <p class="card-text">{{post.content}}</p>
@@ -14,15 +19,20 @@
 
 <form class="comment-form m-4">
     <div class="input-group">
-        <label class="input-group-text" for="comment">Comment</label>
-        <textarea class="form-control" id="comment"></textarea>
+        {{!-- <label class="input-group-text" for="comment">Comment</label> --}}
+        <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
         <button class="btn btn-primary" type="submit">Submit</button>
-
     </div>
 </form>
 
+<h5 class="text-center m-4">Your Comments</h5>
+{{#each userComments as |comment|}}
+{{> user-comment-details }}
+{{/each}}
+
+<h5 class="text-center m-4">All Comments</h5>
 {{#each comments as |comment|}}
-{{> comment-details}}
+{{> comment-details }}
 {{/each}}
 
 <script src="/js/comment.js"></script>

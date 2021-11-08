@@ -1,9 +1,11 @@
+<h1 class="text-center m-3">Your Dashboard</h1>
+<div class="text-center">
+    <a href="/create" class="btn btn-primary">
+        + New Post
+    </a>
+</div>
+
 {{#each posts as |post|}}
 {{> dashboard-details}}
 {{/each}}
 
-<a href="/create">
-    <button class="btn btn-default">
-        + New Post
-    </button>
-</a>
