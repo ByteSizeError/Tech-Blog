@@ -23,6 +23,8 @@ router.get("/", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
+            include: [{ model: User }],
+
             where: {
                 user_id: req.session.user_id,
             },
@@ -61,7 +63,9 @@ router.get("/edit/:id", withAuth, async (req, res) => {
 
 router.get("/posts/:id", withAuth, async (req, res) => {
     try {
-        const postData = await Post.findByPk(req.params.id);
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User }],
+        });
 
         const post = postData.get({ plain: true });
 
@@ -76,11 +80,24 @@ router.get("/posts/:id", withAuth, async (req, res) => {
         const comments = commentData.map((comment) =>
             comment.get({ plain: true })
         );
+        const userCommentData = await Comment.findAll({
+            include: [{ model: User }],
+            where: {
+                post_id: req.params.id,
+                user_id: req.session.user_id,
+            },
+            order: [["date_created", "DESC"]],
+        });
+
+        const userComments = userCommentData.map((comment) =>
+            comment.get({ plain: true })
+        );
 
         res.render("post", {
             logged_in: req.session.logged_in,
             post,
             comments,
+            userComments,
         });
     } catch (err) {
         res.status(500).json(err);
