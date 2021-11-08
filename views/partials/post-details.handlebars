@@ -1,5 +1,4 @@
 <section class="card m-4">
-
     <header class="card-header">
         <span class="text-muted">By</span>
         <span class="fw-bold">
@@ -12,7 +11,7 @@
         </h3>
         <p class="card-text">{{content}}</p>
         <div class="text-center">
-            <a href="/posts/{{id}}" class="btn btn-primary">
+            <a href="/posts/{{id}}" class="btn btn-outline-primary">
                 Comments
             </a>
         </div>
@@ -20,7 +19,7 @@
     <footer class="card-footer">
         <span class="text-muted">Posted</span>
         <span class="fw-lighter">
-            {{date_created}}
+            {{format_date date_created}}
         </span>
     </footer>
 </section>

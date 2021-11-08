@@ -13,7 +13,7 @@
         <p class="card-text">{{content}}</p>
 
         <div class="text-center">
-            <a class="btn btn-primary" href="/edit/{{id}}">
+            <a class="btn btn-outline-primary" href="/edit/{{id}}">
                 Edit
             </a>
         </div>
@@ -23,7 +23,7 @@
     <footer class="card-footer">
         <span class="text-muted">Posted</span>
         <span class="fw-lighter">
-            {{date_created}}
+            {{format_date date_created}}
         </span>
 
     </footer>
