@@ -5,27 +5,22 @@
             {{user.username}}
         </span>
     </header>
-
     <div class="card-body">
         <h3 class="card-title text-center">
             {{title}}
         </h3>
         <p class="card-text">{{content}}</p>
-
         <div class="text-center">
             <a class="btn btn-outline-primary" href="/edit/{{id}}">
                 <i class="far fa-edit"></i>
-                Edit
+                Edit Post
             </a>
         </div>
-
     </div>
-
     <footer class="card-footer">
         <span class="text-muted">Posted</span>
         <span class="fw-lighter">
             {{format_date date_created}}
         </span>
-
     </footer>
 </section>

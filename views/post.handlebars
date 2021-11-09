@@ -16,20 +16,17 @@
         </span>
     </footer>
 </section>
-
 <form class="comment-form m-4">
     <div class="input-group">
         {{!-- <label class="input-group-text" for="comment">Comment</label> --}}
-        <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
+        <textarea class="form-control" id="comment" placeholder="Comment..."></textarea>
         <button class="btn btn-outline-primary" type="submit"><i class="far fa-paper-plane"></i> Submit</button>
     </div>
 </form>
-
-<h5 class="text-center m-4">Your Comments</h5>
+<h5 class="text-center m-4">My Comments</h5>
 {{#each userComments as |comment|}}
 {{> user-comment-details }}
 {{/each}}
-
 <h5 class="text-center m-4">All Comments</h5>
 {{#each comments as |comment|}}
 {{> comment-details }}

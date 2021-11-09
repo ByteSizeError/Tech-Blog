@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post } = require("../../models");
 
+// Get route for all post
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll();
@@ -10,6 +11,7 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Get route for post by id
 router.get("/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
@@ -23,6 +25,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Post route for post
 router.post("/", async (req, res) => {
     try {
         const newPost = await Post.create({
@@ -36,6 +39,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Put route for post by id
 router.put("/:id", async (req, res) => {
     try {
         const postData = await Post.update(req.body, {
@@ -54,6 +58,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// Delete route for post by id
 router.delete("/:id", async (req, res) => {
     try {
         const postData = await Post.destroy({

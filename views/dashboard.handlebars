@@ -1,11 +1,10 @@
 <h1 class="text-center m-3">My Dashboard</h1>
 <div class="text-center">
     <a href="/create" class="btn btn-outline-primary">
-        <i class="fas fa-plus"></i>
+        <i class="far fa-sticky-note"></i>
         New Post
     </a>
 </div>
-
 {{#each posts as |post|}}
 {{> dashboard-details}}
 {{/each}}

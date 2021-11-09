@@ -1,11 +1,12 @@
 module.exports = {
-    // the helper method 'format_time' will take in a timestamp and return a string with only the time
-    format_time: (date) => {
-        // We use the 'toLocaleTimeString()' method to format the time as H:MM:SS AM/PM
-        return date.toLocaleTimeString();
-    },
-
+    // the helper method 'format_date' will take in a timestamp and return a string with the date and time
     format_date: (date) => {
-        return date.toLocaleDateString("en-US");
+        return (
+            // We use the 'toLocaleDateString()' method to format the date as MM/DD/YYYY
+            date.toLocaleDateString("en-US") +
+            " at " +
+            // We use the 'toLocaleTimeString()' method to format the time as H:MM:SS AM/PM
+            date.toLocaleTimeString()
+        );
     },
 };
